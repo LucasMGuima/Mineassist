@@ -1,46 +1,56 @@
 #include "../include/Mineassist.h"
+#include "../include/Interface.h"
 #include <stdio.h>
 #include <stdlib.h>
-// Fazer o mesmo para Windows
-// Tirar o Enter do terminal, LINUX
-#include <termios.h>
-#include <unistd.h>
 
-void setInputMode(){
-    struct termios tattr;
-    tcgetattr(STDIN_FILENO, &tattr);
-    tattr.c_lflag &= ~(ICANON | ECHO);
-    tcsetattr(STDIN_FILENO, TCSAFLUSH, &tattr);
+void opAdd(List * list){
+    printf("Adicionar um novo ponto.\n");
+}
+
+void opDel(List * list){
+    printf("Remover um ponto.\n");
+}
+
+void opShow(List * list){
+    printf("Mostrar os pontos.\n");
 }
 
 int main(){
-    List * list = malloc(sizeof(List));
-
-    setInputMode();
-
+    char * operacoes = {"Add", "Del", "Show"}; 
+    menu(&operacoes, 0, 3);
+    /*
     int currsor = 0;
+    int num_opcoes = 2;
     while(1){
+        system("clear");
         printf("%c Add\n%c Del\n%c Show\n", 
             (currsor == 0) ? '>' : ' ', 
             (currsor == 1) ? '>' : ' ' , 
             (currsor == 2) ? '>' : ' ');
 
         char c = getchar();
-        if(c == 'w'){
-            currsor--;
-            if(currsor < 0){
-                currsor = 2;
-            }
-        }else if(c == 's'){
-            currsor++;
-            if(currsor > 2){
-                currsor = 0;
-            }
+        switch (c)
+        {
+            case 'w':
+                // Move o marcador para cima
+                currsor--;
+                if(currsor < 0){
+                    currsor = num_opcoes;
+                }
+                break;
+            
+            case 's':
+                // Move o marcador para baixo
+                currsor++;
+                if(currsor > num_opcoes){
+                    currsor = 0;
+                }
+                break;
+            
+            default:
+                break;
         }
+    }*/
 
-        system("clear");
-    }
-
-    free(list);
     return 0;
 }
