@@ -2,6 +2,8 @@
 #ifndef _INTERFACE_H
 #define _INTERFACE_H
 
+void setInputMode();
+
 // Define um tipo ponteiro de função
 typedef void (*func_type)(void);
 
