@@ -18,4 +18,4 @@ all: ./build/main.o ./build/list.o ./build/menu.o
 	$(CC) ./build/main.o ./build/list.o ./build/menu.o -o ./tests/main.exe
 
 clean:
-	rm -rf ./tests/main.exe
+	rm -rf ./tests/main.exe ./build/*.o
