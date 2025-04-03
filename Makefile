@@ -15,7 +15,7 @@ build:
 	$(CC) $(CFLAGS) -c ./src/main.c -o ./build/main.o
 
 all: ./build/main.o ./build/list.o ./build/menu.o
-	$(CC) ./build/main.o ./build/list.o ./build/menu.o -o ./tests/main.exe
+	$(CC) ./build/main.o ./build/list.o ./build/menu.o -o ./bin/main.exe
 
 clean:
 	rm -rf ./tests/main.exe ./build/*.o

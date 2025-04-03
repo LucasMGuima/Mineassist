@@ -4,7 +4,15 @@
 #include <stdlib.h>
 
 void opAdd(List * list){
-    printf("Adicionar um novo ponto.\n");
+    Position nova_pos;
+    char * nome;
+
+    printf("Entre com o nome do novo ponto: ");
+    scanf("%s", &nome);
+
+    nova_pos.nome = nome;
+
+    addPos(list, nova_pos);
 }
 
 void opDel(List * list){
@@ -12,17 +20,35 @@ void opDel(List * list){
 }
 
 void opShow(List * list){
-    printf("Mostrar os pontos.\n");
+    showList(list);
+    scanf("");
 }
 
 int main(){
-    char * operacoes = {"Add", "Del", "Show"}; 
-    //menu(&operacoes, 0, 3);
-    
+    char * operacoes = {"Add", "Del", "Show"};
+    List * root;
     int currsor = 0;
     int num_opcoes = 2;
 
-    menu(&operacoes, currsor, num_opcoes);
+    int op_ecolida = menu(&operacoes, currsor, num_opcoes);
+
+    switch (op_ecolida)
+    {
+        case 0:
+            opAdd(root);
+            break;
+        
+        case 1:
+            opDel(root);
+            break;
+        
+        case 2:
+            opShow(root);
+            break;
+        
+        default:
+            break;
+    }
 
     return 0;
 }
